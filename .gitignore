@@ -1,0 +1,24 @@
+# Android & Gradle generated files
+*.iml
+*.apk
+*.aab
+*.aar
+*.zip
+*.jks
+*.keystore
+.gradle/
+.kotlin/
+.idea/
+.vscode/
+.externalNativeBuild/
+.cxx/
+.DS_Store
+/build/
+app/build/
+/captures/
+
+# Local & Firebase environment secrets
+local.properties
+google-services.json
+app/google-services.json
+.firebaserc
