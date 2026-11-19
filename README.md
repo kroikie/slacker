@@ -1,7 +1,7 @@
 # Slacker — Zero-Backend, Production-Secured Client-Side AI Chat App
 
 [![Firebase Agent Skills](https://img.shields.io/badge/Built%20with-Firebase%20Agent%20Skills-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/docs/ai-assistance/agent-skills)
-[![Coding Agent](https://img.shields.io/badge/Coding%20Agent-Gemini-4285F4?logo=googlegemini&logoColor=white)](https://firebase.google.com/docs/ai-assistance/agent-skills)
+[![Built with Antigravity](https://img.shields.io/badge/Built%20with-Antigravity-4285F4?logo=google&logoColor=white)](https://antigravity.google)
 
 > *"Where work (doesn't) happen."*
 
@@ -11,9 +11,9 @@ Built for [`#FirebaseFactFridays`](https://www.linkedin.com/posts/arthur-thompso
 
 ---
 
-## 🤖 Built with Gemini & Firebase Agent Skills
+## 🤖 Built with Antigravity & Firebase Agent Skills
 
-Slacker was developed with **Gemini** as the AI coding agent, powered by **[Firebase Agent Skills](https://firebase.google.com/docs/ai-assistance/agent-skills)** (`firebase-ai-logic`, `firebase-auth-basics`, `firebase-firestore`, and `firebase-security-rules-auditor`) to implement current Firebase AI Logic SDK idioms, App Check limited-use token attestation, Compose `FirebaseAuthScreen` onboarding, and real-time Firestore synchronization.
+Slacker was developed in **[Google Antigravity](https://antigravity.google)** powered by Gemini and **[Firebase Agent Skills](https://firebase.google.com/docs/ai-assistance/agent-skills)** (`firebase-ai-logic`, `firebase-auth-basics`, `firebase-firestore`, and `firebase-security-rules-auditor`) to implement current Firebase AI Logic SDK idioms, App Check limited-use token attestation, Compose `FirebaseAuthScreen` onboarding, and real-time Firestore synchronization.
 
 👉 **Learn how to add Firebase Agent Skills to your AI coding workflow:**  
 **[https://firebase.google.com/docs/ai-assistance/agent-skills](https://firebase.google.com/docs/ai-assistance/agent-skills)**
