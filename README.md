@@ -1,7 +1,23 @@
 # Slacker — Zero-Backend, Production-Secured Client-Side AI Chat App
 
-[![Firebase Agent Skills](https://img.shields.io/badge/Built%20with-Firebase%20Agent%20Skills-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/docs/ai-assistance/agent-skills)
-[![Built with Antigravity](https://img.shields.io/badge/Built%20with-Antigravity-4285F4?logo=google&logoColor=white)](https://antigravity.google)
+<p align="left">
+  <strong>Built with</strong>&nbsp;&nbsp;&nbsp;
+  <a href="https://antigravity.google">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset=".github/assets/antigravity-lockup-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset=".github/assets/antigravity-lockup-light.svg">
+      <img alt="Google Antigravity" src=".github/assets/antigravity-lockup-light.svg" height="26" align="absmiddle">
+    </picture>
+  </a>
+  &nbsp;&nbsp;&plus;&nbsp;&nbsp;
+  <a href="https://firebase.google.com/docs/ai-assistance/agent-skills">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset=".github/assets/firebase-lockup-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset=".github/assets/firebase-lockup-light.svg">
+      <img alt="Firebase" src=".github/assets/firebase-lockup-light.svg" height="32" align="absmiddle">
+    </picture>
+  </a>
+</p>
 
 > *"Where work (doesn't) happen."*
 
@@ -11,7 +27,7 @@ Built for [`#FirebaseFactFridays`](https://www.linkedin.com/posts/arthur-thompso
 
 ---
 
-## 🤖 Built with Antigravity & Firebase Agent Skills
+## <img src=".github/assets/antigravity-icon.svg" height="24" align="absmiddle" alt="Antigravity" /> Built with Antigravity & <img src=".github/assets/firebase-logomark.svg" height="24" align="absmiddle" alt="Firebase" /> Firebase Agent Skills
 
 Slacker was developed in **[Google Antigravity](https://antigravity.google)** powered by Gemini and **[Firebase Agent Skills](https://firebase.google.com/docs/ai-assistance/agent-skills)** (`firebase-ai-logic`, `firebase-auth-basics`, `firebase-firestore`, and `firebase-security-rules-auditor`) to implement current Firebase AI Logic SDK idioms, App Check limited-use token attestation, Compose `FirebaseAuthScreen` onboarding, and real-time Firestore synchronization.
 
