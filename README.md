@@ -1,22 +1,7 @@
 # Slacker — Zero-Backend, Production-Secured Client-Side AI Chat App
 
 <p align="left">
-  <strong>Built with</strong>&nbsp;&nbsp;&nbsp;
-  <a href="https://antigravity.google">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset=".github/assets/antigravity-lockup-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset=".github/assets/antigravity-lockup-light.svg">
-      <img alt="Google Antigravity" src=".github/assets/antigravity-lockup-light.svg" height="26" align="absmiddle">
-    </picture>
-  </a>
-  &nbsp;&nbsp;&plus;&nbsp;&nbsp;
-  <a href="https://firebase.google.com/docs/ai-assistance/agent-skills">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset=".github/assets/firebase-lockup-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset=".github/assets/firebase-lockup-light.svg">
-      <img alt="Firebase" src=".github/assets/firebase-lockup-light.svg" height="32" align="absmiddle">
-    </picture>
-  </a>
+  <a href="https://antigravity.google"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/antigravity-lockup-dark.svg"><source media="(prefers-color-scheme: light)" srcset=".github/assets/antigravity-lockup-light.svg"><img alt="Google Antigravity" src=".github/assets/antigravity-lockup-light.svg" width="140" height="18" align="absmiddle"></picture></a>&nbsp;&nbsp;&plus;&nbsp;&nbsp;<a href="https://firebase.google.com/docs/ai-assistance/agent-skills"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/firebase-lockup-dark.svg"><source media="(prefers-color-scheme: light)" srcset=".github/assets/firebase-lockup-light.svg"><img alt="Firebase" src=".github/assets/firebase-lockup-light.svg" width="80" height="22" align="absmiddle"></picture></a>
 </p>
 
 > *"Where work (doesn't) happen."*
@@ -27,7 +12,7 @@ Built for [`#FirebaseFactFridays`](https://www.linkedin.com/posts/arthur-thompso
 
 ---
 
-## <img src=".github/assets/antigravity-icon.svg" height="24" align="absmiddle" alt="Antigravity" /> Built with Antigravity & <img src=".github/assets/firebase-logomark.svg" height="24" align="absmiddle" alt="Firebase" /> Firebase Agent Skills
+## <img src=".github/assets/antigravity-icon.svg" width="20" height="20" align="absmiddle" alt="Antigravity" /> <img src=".github/assets/firebase-logomark.svg" width="20" height="20" align="absmiddle" alt="Firebase" /> Built with Antigravity & Firebase Agent Skills
 
 Slacker was developed in **[Google Antigravity](https://antigravity.google)** powered by Gemini and **[Firebase Agent Skills](https://firebase.google.com/docs/ai-assistance/agent-skills)** (`firebase-ai-logic`, `firebase-auth-basics`, `firebase-firestore`, and `firebase-security-rules-auditor`) to implement current Firebase AI Logic SDK idioms, App Check limited-use token attestation, Compose `FirebaseAuthScreen` onboarding, and real-time Firestore synchronization.
 
