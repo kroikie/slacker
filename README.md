@@ -1,10 +1,22 @@
 # Slacker — Zero-Backend, Production-Secured Client-Side AI Chat App
 
+[![Firebase Agent Skills](https://img.shields.io/badge/Built%20with-Firebase%20Agent%20Skills-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/docs/ai-assistance/agent-skills)
+[![Coding Agent](https://img.shields.io/badge/Coding%20Agent-Gemini-4285F4?logo=googlegemini&logoColor=white)](https://firebase.google.com/docs/ai-assistance/agent-skills)
+
 > *"Where work (doesn't) happen."*
 
 **Slacker** is a Slack-inspired Android team chat application built with **Jetpack Compose** and **Firebase** to demonstrate how to ship **client-side generative AI features safely in production—without operating a custom backend server**.
 
 Built for [`#FirebaseFactFridays`](https://www.linkedin.com/posts/arthur-thompson-02a275258_firebasefactfridays-activity-7494086220809990144-Y2mZ) and Android security architecture demos, Slacker pairs **multimodal image-to-image avatar generation (`gemini-2.5-flash-image` / Nano Banana)** via **Firebase AI Logic** with **Firebase App Check + Play Integrity limited-use tokens** to block scripted cURL and token-replay attacks.
+
+---
+
+## 🤖 Built with Gemini & Firebase Agent Skills
+
+Slacker was developed with **Gemini** as the AI coding agent, powered by **[Firebase Agent Skills](https://firebase.google.com/docs/ai-assistance/agent-skills)** (`firebase-ai-logic`, `firebase-auth-basics`, `firebase-firestore`, and `firebase-security-rules-auditor`) to implement current Firebase AI Logic SDK idioms, App Check limited-use token attestation, Compose `FirebaseAuthScreen` onboarding, and real-time Firestore synchronization.
+
+👉 **Learn how to add Firebase Agent Skills to your AI coding workflow:**  
+**[https://firebase.google.com/docs/ai-assistance/agent-skills](https://firebase.google.com/docs/ai-assistance/agent-skills)**
 
 ---
 
