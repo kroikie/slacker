@@ -7,7 +7,7 @@
 
 **Slacker** is a Slack-inspired Android team chat application built with **Jetpack Compose** and **Firebase** to demonstrate how to ship **client-side generative AI features safely in production—without operating a custom backend server**.
 
-Built for [`#FirebaseFactFridays`](https://www.linkedin.com/posts/arthur-thompson-02a275258_firebasefactfridays-activity-7494086220809990144-Y2mZ) and Android security architecture demos, Slacker pairs **multimodal image-to-image avatar generation (`gemini-2.5-flash-image` / Nano Banana)** via **Firebase AI Logic** with **Firebase App Check + Play Integrity limited-use tokens** to block scripted cURL and token-replay attacks.
+Built for [`#FirebaseFactFridays`](https://www.linkedin.com/posts/arthur-thompson-02a275258_firebasefactfridays-activity-7494086220809990144-Y2mZ) and Android security architecture demos, Slacker pairs **multimodal image-to-image avatar generation (`gemini-3.1-flash-image` / Nano Banana)** via **Firebase AI Logic** with **Firebase App Check + Play Integrity limited-use tokens** to block scripted cURL and token-replay attacks.
 
 ---
 
@@ -25,7 +25,7 @@ Slacker was developed with **Gemini** as the AI coding agent, powered by **[Fire
 | Pillar | Implementation Details | Source Files |
 | :--- | :--- | :--- |
 | **1. Replay-Protected Client-Side AI (`useLimitedUseAppCheckTokens`)** | Initializes `Firebase.ai` with `useLimitedUseAppCheckTokens = true` alongside **Play Integrity** (release) and **DebugAppCheckProvider** (debug). Every AI request consumes a single-use cryptographic App Check token—intercepted cURL replays fail with `403 Forbidden`. | [`SlackerApplication.kt`](app/src/main/java/com/example/arthurthompson/slacker/SlackerApplication.kt), [`ChatViewModel.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/ChatViewModel.kt) |
-| **2. Multimodal 3D "Cartoonify" Avatar Pipeline (`gemini-2.5-flash-image`)** | Pulls the user's authentic Google Sign-In portrait (`providerId == "google.com"`), downloads a software `Bitmap` via Coil, and invokes **Nano Banana** (`gemini-2.5-flash-image`) with `ResponseModality.TEXT` + `ResponseModality.IMAGE` to synthesize a pastel 3D-cartoon avatar preserving the user's likeness. | [`ChatViewModel.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/ChatViewModel.kt), [`SettingsScreen.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/SettingsScreen.kt) |
+| **2. Multimodal 3D "Cartoonify" Avatar Pipeline (`gemini-3.1-flash-image`)** | Pulls the user's authentic Google Sign-In portrait (`providerId == "google.com"`), downloads a software `Bitmap` via Coil, and invokes **Nano Banana** (`gemini-3.1-flash-image`) with `ResponseModality.TEXT` + `ResponseModality.IMAGE` to synthesize a pastel 3D-cartoon avatar preserving the user's likeness. | [`ChatViewModel.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/ChatViewModel.kt), [`SettingsScreen.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/SettingsScreen.kt) |
 | **3. Real-Time Profile & `#general` Chat Propagation** | Uploads the generated avatar JPEG to **Cloud Storage** (`avatars/{uid}/{uuid}.jpg`), updates `FirebaseAuth` (`UserProfileChangeRequest`), and executes a **Cloud Firestore `WriteBatch`** across the user's messages so active `#general` threads reflect the new 3D avatar immediately. | [`ChatViewModel.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/ChatViewModel.kt), [`ChatScreen.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/ChatScreen.kt), [`Message.kt`](app/src/main/java/com/example/arthurthompson/slacker/model/Message.kt) |
 | **4. Trust-First Compose Onboarding (`firebase-ui-auth` 10.x)** | Uses the modern Jetpack Compose `FirebaseAuthScreen` + `authUIConfiguration` DSL (`AuthProvider.Google`) with a custom Material 3 method picker layout—hydrating initial display name and portrait photo on first tap. | [`SignInScreen.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/SignInScreen.kt), [`MainActivity.kt`](app/src/main/java/com/example/arthurthompson/slacker/MainActivity.kt) |
 
@@ -40,7 +40,7 @@ sequenceDiagram
     participant UI as SettingsScreen / ChatScreen (Compose)
     participant VM as ChatViewModel
     participant AC as Firebase App Check (Play Integrity)
-    participant AI as Firebase AI Logic (gemini-2.5-flash-image)
+    participant AI as Firebase AI Logic (gemini-3.1-flash-image)
     participant ST as Firebase Storage
     participant FS as Cloud Firestore (#general)
 
@@ -87,13 +87,13 @@ private val ai = Firebase.ai(
 )
 ```
 
-### 2. Multimodal Image-to-Image Cartoonification (`Nano Banana`)
-When the user taps the ✨ (`AutoAwesome`) button in [`SettingsScreen.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/SettingsScreen.kt), `ChatViewModel` always resolves the original `google.com` provider photo URL (preventing generational degradation across repeated runs) and invokes `gemini-2.5-flash-image`:
+### 2. Multimodal Image-to-Image Cartoonification (`gemini-3.1-flash-image`)
+When the user taps the ✨ (`AutoAwesome`) button in [`SettingsScreen.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/SettingsScreen.kt), `ChatViewModel` always resolves the original `google.com` provider photo URL (preventing generational degradation across repeated runs) and invokes `gemini-3.1-flash-image`:
 
 ```kotlin
 private suspend fun performCartoonization(input: Bitmap): Bitmap? {
     val model = ai.generativeModel(
-        modelName = "gemini-2.5-flash-image",
+        modelName = "gemini-3.1-flash-image",
         generationConfig = generationConfig {
             responseModalities = listOf(ResponseModality.TEXT, ResponseModality.IMAGE)
         }
@@ -118,14 +118,14 @@ private suspend fun performCartoonization(input: Bitmap): Bitmap? {
 ```
 
 ### 3. Atomic Profile & Chat Sync
-Once `gemini-2.5-flash-image` returns the synthesized `Bitmap`, [`ChatViewModel.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/ChatViewModel.kt) uploads it to Cloud Storage (`avatars/$uid/${UUID.randomUUID()}.jpg`), updates `FirebaseAuth.currentUser`, and commits a Firestore `WriteBatch` updating `senderPhotoUrl` across all messages authored by `senderUid`—instantly refreshing the live `#general` stream in [`ChatScreen.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/ChatScreen.kt).
+Once `gemini-3.1-flash-image` returns the synthesized `Bitmap`, [`ChatViewModel.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/ChatViewModel.kt) uploads it to Cloud Storage (`avatars/$uid/${UUID.randomUUID()}.jpg`), updates `FirebaseAuth.currentUser`, and commits a Firestore `WriteBatch` updating `senderPhotoUrl` across all messages authored by `senderUid`—instantly refreshing the live `#general` stream in [`ChatScreen.kt`](app/src/main/java/com/example/arthurthompson/slacker/ui/ChatScreen.kt).
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **UI**: Kotlin `2.2`, Jetpack Compose (BOM `2026.02.01`), Material 3, Navigation Compose, Coil (`coil-compose`)
-- **AI**: Firebase AI Logic (`com.google.firebase:firebase-ai`, Firebase BOM `34.17.0`) — `gemini-2.5-flash-image`
+- **AI**: Firebase AI Logic (`com.google.firebase:firebase-ai`, Firebase BOM `34.17.0`) — `gemini-3.1-flash-image`
 - **Security**: Firebase App Check (`PlayIntegrity` + `Debug` providers, `useLimitedUseAppCheckTokens = true`)
 - **Auth & Data**: `firebase-ui-auth` Compose (`10.0.0-beta03`), Firebase Auth (Google Sign-In), Cloud Firestore, Cloud Storage
 

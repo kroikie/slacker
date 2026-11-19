@@ -140,8 +140,8 @@ class ChatViewModel : ViewModel() {
                     return@launch
                 }
 
-                // 2. Cartoonize using Imagen
-                Log.d("ChatViewModel", "Performing cartoonization with Nano Banana...")
+                // 2. Cartoonize using Gemini 3.1 Flash Image via Firebase AI Logic
+                Log.d("ChatViewModel", "Performing cartoonization with gemini-3.1-flash-image...")
                 val cartoonizedBitmap = performCartoonization(bitmap) ?: run {
                     Log.d("ChatViewModel", "Cartoonization returned null")
                     return@launch
@@ -185,9 +185,9 @@ class ChatViewModel : ViewModel() {
     }
 
     private suspend fun performCartoonization(input: Bitmap): Bitmap? {
-        // Use Nano Banana via Google Developer AI API
+        // Use Gemini 3.1 Flash Image via Firebase AI Logic
         val model = ai.generativeModel(
-            modelName = "gemini-2.5-flash-image",
+            modelName = "gemini-3.1-flash-image",
             generationConfig = generationConfig {
                 responseModalities = listOf(ResponseModality.TEXT, ResponseModality.IMAGE)
             }
